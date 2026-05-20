@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bulacation</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+
+    :root{
+      --yellow:#f4c430;
+      --darkblue:#0b1f3a;
+      --light:#f8f9fa;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#f5f5f5;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      background:var(--darkblue);
+    }
+
+    .navbar-brand,
+    .nav-link{
+      color:white !important;
+      font-weight:bold;
+    }
+
+    .nav-link:hover{
+      color:var(--yellow) !important;
+    }
+
+    /* HERO */
+
+    .carousel-item{
+      height:100vh;
+      min-height:500px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+
+    .carousel-overlay{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.55);
+      top:0;
+      left:0;
+    }
+
+    .carousel-caption{
+      bottom:30%;
+      z-index:2;
+    }
+
+    .carousel-caption h1{
+      font-size:70px;
+      font-weight:bold;
+      color:var(--yellow);
+    }
+
+    .carousel-caption p{
+      font-size:22px;
+    }
+
+    .btn-custom{
+      background:var(--yellow);
+      color:var(--darkblue);
+      font-weight:bold;
+      border:none;
+      padding:12px 25px;
+      transition:0.3s;
+    }
+
+    .btn-custom:hover{
+      background:white;
+      transform:scale(1.05);
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:80px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      color:var(--darkblue);
+      font-weight:bold;
+      font-size:40px;
+    }
+
+    .section-title p{
+      color:#555;
+    }
+
+    /* CARDS */
+
+    .destination-card,
+    .festival-card,
+    .food-card,
+    .gallery-card{
+      border:none;
+      overflow:hidden;
+      transition:0.4s;
+      border-radius:15px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      background:white;
+      height:100%;
+    }
+
+    .destination-card:hover,
+    .festival-card:hover,
+    .food-card:hover,
+    .gallery-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card-img-top{
+      height:230px;
+      object-fit:cover;
+    }
+
+    /* IMAGE PLACEHOLDER */
+
+    .placeholder-img{
+      height:230px;
+      background:linear-gradient(45deg,var(--yellow),var(--darkblue));
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:24px;
+      font-weight:bold;
+    }
+
+    /* FILTERS */
+
+    .filter-btn{
+      margin:5px;
+      border:none;
+      padding:10px 18px;
+      background:var(--darkblue);
+      color:white;
+      border-radius:30px;
+      transition:0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      background:var(--yellow);
+      color:var(--darkblue);
+    }
+
+    /* GALLERY */
+
+    .gallery-img{
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .gallery-img:hover{
+      transform:scale(1.03);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:var(--darkblue);
+      color:white;
+      padding:50px 0;
+    }
+
+    footer h4{
+      color:var(--yellow);
+    }
+
+    /* FORM */
+
+    .form-control,
+    .form-select{
+      padding:12px;
+    }
+
+    .travel-tips li{
+      margin-bottom:10px;
+    }
+
+    /* MODAL */
+
+    .modal-header{
+      background:var(--darkblue);
+      color:white;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .carousel-caption h1{
+        font-size:40px;
+      }
+
+      .carousel-caption p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Bulacation</a>
+
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Homepage</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="tourist.html">Tourist</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#festival">Festival</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#food">Food</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#inquiry">Inquiry</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!-- HERO / HOMEPAGE -->
+
+<section id="home" class="p-0">
+
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+    <!-- SLIDE 1 -->
+
+    <div class="carousel-item active"
+    style="background-image:url('images/capitol.jpg');">
+
+      <div class="carousel-overlay"></div>
+
+      <div class="carousel-caption">
+
+        <h1>BULACAN</h1>
+
+        <p>Land of Heroes</p>
+
+        <p>Discover heritage, culture, adventure, festivals, and delicious delicacies.</p>
+
+        <a href="tourist.html" class="btn btn-custom mt-3">
+          Explore Destinations
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- SLIDE 2 -->
+
+    <div class="carousel-item"
+    style="background-image:url('images/miguel.jpg');">
+
+      <div class="carousel-overlay"></div>
+
+      <div class="carousel-caption">
+
+        <h1>Welcome to Bulacan</h1>
+
+        <p>Experience history, nature, and Filipino culture.</p>
+
+        <a href="#about" class="btn btn-custom mt-3">
+          Learn More
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- SLIDE 3 -->
+
+    <div class="carousel-item"
+    style="background-image:url('images/rock.jpg');">
+
+      <div class="carousel-overlay"></div>
+
+      <div class="carousel-caption">
+
+        <h1>Bulacation</h1>
+
+        <p>Your next travel destination in Central Luzon.</p>
+
+        <a href="#gallery" class="btn btn-custom mt-3">
+          View Gallery
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-6">
+
+      <h4>Bulacation</h4>
+
+      <p>
+        Discover the beauty and culture of Bulacan, Philippines.
+      </p>
+
+       <p>
+        <img src="C:\Users\alzaj\OneDrive\Desktop\BULACATIOUS\images\ClientSurveyQR_website.jpg" width="370" height="100">
+      </p>
+
+    </div>
+
+  
+
+    <div class="col-6">
+
+      <p>Email: info@bulacation.com</p>
+
+      <p>Phone: +63 967 433 0948</p>
+
+      <p>© 2026 Bulacation</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+</footer>
+<!-- DESTINATION MODAL -->
+
+<div class="modal fade" id="detailsModal">
+
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="modalTitle">Destination</h5>
+
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+
+      </div>
+
+      <div class="modal-body" id="modalBody"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- GALLERY MODAL -->
+
+<div class="modal fade" id="galleryModal">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-body text-center">
+
+        <img id="galleryPreview" src="" class="img-fluid">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BOOTSTRAP JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+  // DESTINATIONS ARRAY
+
+  const destinations = [
+
+    {
+      name:"Barasoain Church",
+      city:"Malolos City",
+      category:"Historical Site",
+      fee:"Free",
+      hours:"8:00 AM - 5:00 PM",
+      description:"A historic church known as the cradle of the First Philippine Republic.",
+      activities:"Sightseeing, photography, church visits",
+      bestTime:"November to May",
+      tips:"Visit early morning for fewer crowds."
+    },
+
+    {
+      name:"Biak-na-Bato National Park",
+      city:"San Miguel",
+      category:"Adventure",
+      fee:"₱30",
+      hours:"6:00 AM - 5:00 PM",
+      description:"A nature and historical park famous for caves, rivers, and hiking.",
+      activities:"Hiking, cave exploration, swimming",
+      bestTime:"Summer season",
+      tips:"Bring water and hiking shoes."
+    },
+
+    {
+      name:"Mount Manalmon",
+      city:"San Miguel",
+      category:"Mountain",
+      fee:"₱50",
+      hours:"Open 24 Hours",
+      description:"A beginner-friendly hiking mountain with scenic views.",
+      activities:"Hiking, camping, photography",
+      bestTime:"December to February",
+      tips:"Travel with a local guide."
+    },
+
+    {
+      name:"Pulilan Butterfly Haven",
+      city:"Pulilan",
+      category:"Adventure",
+      fee:"₱40",
+      hours:"8:00 AM - 4:00 PM",
+      description:"A relaxing eco-tourism destination filled with butterflies.",
+      activities:"Nature walks, photography",
+      bestTime:"Morning",
+      tips:"Avoid rainy days."
+    },
+
+    {
+      name:"Casa Real Shrine",
+      city:"Malolos City",
+      category:"Historical Site",
+      fee:"Free",
+      hours:"8:00 AM - 5:00 PM",
+      description:"Historical museum showcasing Bulacan heritage.",
+      activities:"Museum tours",
+      bestTime:"Weekdays",
+      tips:"Bring a camera."
+    },
+
+    {
+      name:"Balagbag Falls",
+      city:"Doña Remedios Trinidad",
+      category:"Adventure",
+      fee:"₱20",
+      hours:"7:00 AM - 5:00 PM",
+      description:"Beautiful waterfall perfect for swimming and picnics.",
+      activities:"Swimming, trekking",
+      bestTime:"Summer",
+      tips:"Wear comfortable footwear."
+    }
+
+  ];
+
+  const container = document.getElementById("destinationContainer");
+
+  function displayDestinations(data){
+
+    container.innerHTML = "";
+
+    data.forEach(destination => {
+
+      container.innerHTML += `
+
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="destination-card">
+
+          <div class="placeholder-img">
+            DESTINATION IMAGE
+          </div>
+
+          <div class="card-body">
+
+            <h5>${destination.name}</h5>
+
+            <p><strong>Location:</strong> ${destination.city}</p>
+
+            <p><strong>Category:</strong> ${destination.category}</p>
+
+            <p>${destination.description}</p>
+
+            <p><strong>Entrance Fee:</strong> ${destination.fee}</p>
+
+            <p><strong>Opening Hours:</strong> ${destination.hours}</p>
+
+            <button class="btn btn-custom"
+            onclick='showDetails(${JSON.stringify(destination)})'>
+            View Details
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+
+  displayDestinations(destinations);
+
+  // SEARCH FUNCTION
+
+  document.getElementById("searchInput").addEventListener("keyup", function(){
+
+    const value = this.value.toLowerCase();
+
+    const filtered = destinations.filter(destination =>
+
+      destination.name.toLowerCase().includes(value) ||
+      destination.city.toLowerCase().includes(value) ||
+      destination.category.toLowerCase().includes(value)
+
+    );
+
+    displayDestinations(filtered);
+
+  });
+
+  // FILTER
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+
+      this.classList.add("active");
+
+      const category = this.dataset.category;
+
+      if(category === "All"){
+        displayDestinations(destinations);
+      }else{
+        const filtered = destinations.filter(destination =>
+          destination.category === category
+        );
+
+        displayDestinations(filtered);
+      }
+
+    });
+
+  });
+
+  // MODAL DETAILS
+
+  function showDetails(destination){
+
+    document.getElementById("modalTitle").innerText = destination.name;
+
+    document.getElementById("modalBody").innerHTML = `
+
+      <p><strong>Location:</strong> ${destination.city}</p>
+
+      <p><strong>Category:</strong> ${destination.category}</p>
+
+      <p><strong>Description:</strong> ${destination.description}</p>
+
+      <p><strong>Activities:</strong> ${destination.activities}</p>
+
+      <p><strong>Best Time to Visit:</strong> ${destination.bestTime}</p>
+
+      <p><strong>Entrance Fee:</strong> ${destination.fee}</p>
+
+      <p><strong>Opening Hours:</strong> ${destination.hours}</p>
+
+      <p><strong>Travel Tips:</strong> ${destination.tips}</p>
+
+    `;
+
+    const modal = new bootstrap.Modal(document.getElementById("detailsModal"));
+
+    modal.show();
+
+  }
+
+  // GALLERY LIGHTBOX
+
+  function openGallery(src){
+
+    document.getElementById("galleryPreview").src = src;
+
+  }
+
+  // FORM VALIDATION
+
+  document.getElementById("inquiryForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const fullname = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const destination = document.getElementById("destination").value;
+    const date = document.getElementById("date").value;
+    const visitors = document.getElementById("visitors").value;
+    const message = document.getElementById("message").value.trim();
+
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const numberPattern = /^[0-9]+$/;
+
+    if(fullname === ""){
+      alert("Full name is required.");
+      return;
+    }
+
+    if(!email.match(emailPattern)){
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    if(!contact.match(numberPattern)){
+      alert("Contact number must contain numbers only.");
+      return;
+    }
+
+    if(destination === ""){
+      alert("Please select a destination.");
+      return;
+    }
+
+    if(date === ""){
+      alert("Please select a travel date.");
+      return;
+    }
+
+    if(visitors < 1){
+      alert("Visitors must be at least 1.");
+      return;
+    }
+
+    if(message === ""){
+      alert("Message is required.");
+      return;
+    }
+
+    alert("Inquiry submitted successfully!");
+
+    this.reset();
+
+  });
+
+</script>
+
+</body>
+</html>
